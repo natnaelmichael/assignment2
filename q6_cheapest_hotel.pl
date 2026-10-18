@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Natnael Michael
+%%%%% STUDENT ID: 500982899
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
@@ -42,7 +42,7 @@ day(31).
 
 %%%%% SECTION: q6_rules
 %%%%% You should put your rules in this section, including helper predicates.
-%%%%% Predicate definition: cheapestHotel(City, CheckInDate, CheckOutDate, Stay)
+%%%%% Predicate definition: cheapestHotel(Stays, Cheapest)
 %%%%% Uses the term stay(HotelName, City, CheckInDate, CheckOutDate, TotalCost)
 
 %% cheapestHotel(Stays, Cheapest)

@@ -2,7 +2,8 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
+%%%%% NAME: Natnael Michael
+%%%%% STUDENT ID: 500982899
 %%%%% NAME:
 %%%%% NAME:
 %
