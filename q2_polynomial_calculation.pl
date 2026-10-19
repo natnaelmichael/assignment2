@@ -6,11 +6,11 @@
 %%%%% NAME: Natnael Michael
 %%%%% STUDENT ID: 500982899
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Taarush Jain
+%%%%% STUDENT ID: 501010905
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Vladimirs Kalinins
+%%%%% STUDENT ID: 501291214
 %
 % Add the required statements in the q2_rules section below.
 % Any helper predicates should also be added to that section.
@@ -26,4 +26,11 @@
 %%%%% Predicate definition: polyCalc(Coeffs, VarValue, Result)
 
 
-
+% An empty polynomial has value 0.
+polyCalc([], _, 0).
+% For c0 + c1*x + c2*x^2 + ..., factor out x from every term after the first:
+%   value = c0 + x * (c1 + c2*x + ...)
+% so the value of the list is its first coefficient plus x times the value of the rest.
+polyCalc([Coeff | Rest], VarValue, Result) :-
+    polyCalc(Rest, VarValue, RestResult),
+    Result is Coeff + VarValue * RestResult.

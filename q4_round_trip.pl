@@ -6,11 +6,11 @@
 %%%%% NAME: Natnael Michael
 %%%%% STUDENT ID: 500982899
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Taarush Jain
+%%%%% STUDENT ID: 501010905
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Vladimirs Kalinins
+%%%%% STUDENT ID: 501291214
 %
 % Add the required statements in the q4_rules section below.
 % Any helper predicates should also be added to that section.
@@ -44,3 +44,42 @@ day(31).
 %%%%% You should put your rules in this section, including helper predicates.
 %%%%% Predicate definition: roundTrip(City, Start, End, NumFlights, FlightDates, Cities, Hotels, Cost)
 
+roundTrip(City, Start, End, NumFlights, FlightDates, Cities, Hotels, Cost) :-
+    NumFlights >= 2,
+    tripFrom(City, Start, City, End, NumFlights, [City], FlightDates, Cities, Hotels, Cost).
+
+% tripFrom(From, Date, Home, End, NumFlights, Visited, FlightDates, Cities, Hotels, Cost):
+% there is a sequence of exactly NumFlights flights that leaves From on Date and whose
+% last flight arrives in Home on End. Visited lists the cities already visited (including
+% Home); none of the stops along the way may be one of them, so no city is visited twice
+% and Home is only returned to on the last flight. FlightDates, Cities and Hotels are the
+% flight dates, the arrival city of each flight, and the hotel stayed at in each stop, all
+% in chronological order. Cost is the total cost of the flights and hotels.
+tripFrom(From, End, Home, End, 1, _, [End], [Home], [], Cost) :-
+    flight(From, Home, End, Cost).
+tripFrom(From, Date, Home, End, NumFlights, Visited,
+         [Date | FlightDates], [Stop | Cities], [Hotel | Hotels], Cost) :-
+    NumFlights > 1,
+    flight(From, Stop, Date, FlightCost),
+    not myMember(Stop, Visited),
+    day(NextDate), Date < NextDate, NextDate =< End,
+    stayCost(Hotel, Stop, Date, NextDate, HotelCost),
+    RemainingFlights is NumFlights - 1,
+    tripFrom(Stop, NextDate, Home, End, RemainingFlights, [Stop | Visited],
+             FlightDates, Cities, Hotels, RestCost),
+    Cost is FlightCost + HotelCost + RestCost.
+
+% stayCost(Hotel, City, CheckinDate, CheckoutDate, Cost): staying at Hotel in City from
+% CheckinDate to CheckoutDate (one hotel for every night) costs Cost. (From Assignment 1.)
+stayCost(Hotel, City, CheckinDate, CheckoutDate, Cost) :-
+    CheckoutDate is CheckinDate + 1,
+    hasRoom(Hotel, City, CheckinDate, Cost).
+stayCost(Hotel, City, CheckinDate, CheckoutDate, Cost) :-
+    NextDate is CheckinDate + 1, NextDate < CheckoutDate,
+    hasRoom(Hotel, City, CheckinDate, NightCost),
+    stayCost(Hotel, City, NextDate, CheckoutDate, RestCost),
+    Cost is NightCost + RestCost.
+
+% myMember(X, List): X is an element of List.
+myMember(X, [X | _]).
+myMember(X, [_ | Rest]) :- myMember(X, Rest).

@@ -4,8 +4,10 @@
 %%%%%
 %%%%% NAME: Natnael Michael
 %%%%% STUDENT ID: 500982899
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Taarush Jain
+%%%%% STUDENT ID: 501010905
+%%%%% NAME: Vladimirs Kalinins
+%%%%% STUDENT ID: 501291214
 %
 % Add the required rules in the corresponding sections. 
 % If you put the rules in the wrong sections, you will lose marks.

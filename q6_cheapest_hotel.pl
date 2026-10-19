@@ -6,11 +6,11 @@
 %%%%% NAME: Natnael Michael
 %%%%% STUDENT ID: 500982899
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Taarush Jain
+%%%%% STUDENT ID: 501010905
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Vladimirs Kalinins
+%%%%% STUDENT ID: 501291214
 %
 % Add the required statements in the q6_rules section below.
 % Any helper predicates should also be added to that section.
